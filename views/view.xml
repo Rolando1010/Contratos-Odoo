@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="contrato_externo"/>
+                    <field name="fecha_contrato"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+    <report
+        id="contract_report"
+        string="Contrato externo / Fecha de contrato"
+        model="sale.order"
+        report_type="qweb-pdf"
+        name="contracts.report_property_offers"
+        file="contracts.report_property_offers"
+    />
+</odoo>
